@@ -1,9 +1,20 @@
 import { CollectionConfig } from 'payload/types'
+import { admins } from '../access/admins'
+import { adminsOrPublished } from '../access/adminsOrPublished'
 
 const Project: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
+  },
+  versions: {
+    drafts: true,
+  },
+  access: {
+    read: adminsOrPublished,
+    update: admins,
+    create: admins,
+    delete: admins,
   },
   fields: [
     {
@@ -13,7 +24,7 @@ const Project: CollectionConfig = {
       required: true,
     },
     {
-      name: 'createdAt',
+      name: 'date_created',
       label: 'Created at',
       type: 'date',
       required: true,
@@ -38,6 +49,47 @@ const Project: CollectionConfig = {
       admin: {
         description: 'A more detailed description of the project',
       },
+    },
+    {
+      name: 'images',
+      label: 'Project Images',
+      type: 'group',
+      interfaceName: 'Images',
+      fields: [
+        {
+          name: 'coverImage',
+          label: 'Cover image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: "images",
+          type: "array",
+          label: "Other Images",
+          minRows: 0,
+          maxRows: 5,
+          labels: {
+            singular: "Image",
+            plural: "Images",
+          },
+          fields: [
+            {
+                name: 'image',
+                type: 'upload',
+                relationTo: 'media',
+                required: true,
+            },
+          ],
+          admin: {
+            components: {
+              RowLabel: ({ data, index }) => {
+                return data?.title || `Image ${String(index).padStart(2, "0")}`;
+              },
+            },
+          },
+        },
+      ],
     },
   ],
 }

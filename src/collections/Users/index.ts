@@ -14,9 +14,9 @@ const Users: CollectionConfig = {
     defaultColumns: ['name', 'email'],
   },
   access: {
-    read: adminsAndUser,
-    create: anyone,
-    update: adminsAndUser,
+    read: admins,
+    create: admins,
+    update: admins,
     delete: admins,
     admin: ({ req: { user } }) => checkRole(['admin'], user),
   },

@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 
-const SkillCategory: CollectionConfig = {
-  slug: 'skillCategory',
+const SkillCategories: CollectionConfig = {
+  slug: 'skill-categories',
   admin: {
     useAsTitle: 'title',
   },
@@ -19,4 +19,4 @@ const SkillCategory: CollectionConfig = {
   ],
 }
 
-export default SkillCategory
+export default SkillCategories

@@ -11,7 +11,7 @@ import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 import Users from './collections/Users'
 import Pages from './collections/Pages'
 import Projects from './collections/Projects'
-import SkillCategory from './collections/SkillCategory'
+import SkillCategories from './collections/SkillCategories'
 import Skills from './collections/Skills'
 import { Media } from './collections/Media'
 
@@ -26,7 +26,7 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Pages, Media, Projects, SkillCategory, Skills],
+  collections: [Users, Pages, Media, Projects, SkillCategories, Skills],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

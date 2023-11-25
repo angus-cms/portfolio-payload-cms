@@ -2,7 +2,7 @@ import { CollectionConfig } from 'payload/types'
 import { admins } from '../access/admins'
 import { adminsOrPublished } from '../access/adminsOrPublished'
 
-const Project: CollectionConfig = {
+const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
@@ -94,4 +94,4 @@ const Project: CollectionConfig = {
   ],
 }
 
-export default Project
+export default Projects

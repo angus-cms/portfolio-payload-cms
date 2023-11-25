@@ -33,7 +33,7 @@ export default buildConfig({
   },
   plugins: [
     seo({
-      collections: ['pages'],
+      collections: ['pages', 'projects'],
       generateTitle,
       uploadsCollection: 'media',
     }),

@@ -4,26 +4,28 @@ import type { CollectionConfig } from 'payload/types'
 
 export const Media: CollectionConfig = {
   slug: 'media',
-  upload: {
-    staticDir: path.resolve(__dirname, '../../../media'),
-  },
   access: {
     read: () => true,
+  },
+  upload: {
+    staticURL: '/media',
+    staticDir: path.resolve(__dirname, '../../media'),
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 250,
+        height: 250,
+        position: 'centre',
+      },
+    ],
+    adminThumbnail: 'thumbnail',
+    mimeTypes: ['image/*'],
   },
   fields: [
     {
       name: 'alt',
       type: 'text',
       required: true,
-    },
-    {
-      name: 'caption',
-      type: 'richText',
-      editor: slateEditor({
-        admin: {
-          elements: ['link'],
-        },
-      }),
     },
   ],
 }

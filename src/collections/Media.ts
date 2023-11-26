@@ -22,16 +22,6 @@ export const Media: CollectionConfig = {
     adminThumbnail: 'thumbnail',
     mimeTypes: ['image/*'],
   },
-  hooks: {
-    beforeChange: [
-      ({ data }) => {
-        if (data.filename) {
-          const extension = data.filename.split('.').pop();
-          data.filename = `${uuidv4()}.${extension}`;
-        }
-      },
-    ],
-  },
   fields: [
     {
       name: 'alt',

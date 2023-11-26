@@ -22,6 +22,7 @@ const Skills: CollectionConfig = {
       name: 'category',
       label: 'Skill Category',
       type: 'relationship',
+      maxDepth: 1,
       relationTo: ['skill-categories'],
       required: true,
     },

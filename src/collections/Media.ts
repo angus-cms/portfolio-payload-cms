@@ -1,6 +1,7 @@
 import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import type { CollectionConfig } from 'payload/types'
+import { v4 as uuidv4 } from 'uuid';
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -20,6 +21,16 @@ export const Media: CollectionConfig = {
     ],
     adminThumbnail: 'thumbnail',
     mimeTypes: ['image/*'],
+  },
+  hooks: {
+    beforeChange: [
+      ({ data }) => {
+        if (data.filename) {
+          const extension = data.filename.split('.').pop();
+          data.filename = `${uuidv4()}.${extension}`;
+        }
+      },
+    ],
   },
   fields: [
     {

@@ -25,6 +25,7 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
+  cors: ['http://localhost:3000'],
   editor: slateEditor({}),
   collections: [Users, Pages, Media, Projects, SkillCategories, Skills],
   typescript: {

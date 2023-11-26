@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types'
+import { admins } from '../access/admins'
 
 const Skills: CollectionConfig = {
   slug: 'skills',
@@ -7,6 +8,9 @@ const Skills: CollectionConfig = {
   },
   access: {
     read: () => true,
+    update: admins,
+    create: admins,
+    delete: admins,
   },
   fields: [
     {
@@ -33,8 +37,8 @@ const Skills: CollectionConfig = {
           label: 'Light mode',
           fields: [
             {
-              name: 'logo',
-              label: 'Logo',
+              name: 'icon',
+              label: 'Icon',
               type: 'upload',
               relationTo: 'media',
               required: true,
@@ -45,8 +49,8 @@ const Skills: CollectionConfig = {
           label: 'Dark mode',
           fields: [
             {
-              name: 'logo_dark_mode',
-              label: 'Logo for dark mode',
+              name: 'icon_dark_mode',
+              label: 'Icon for dark mode',
               type: 'upload',
               relationTo: 'media',
               required: false,

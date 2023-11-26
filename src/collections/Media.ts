@@ -18,7 +18,15 @@ export const Media: CollectionConfig = {
         height: 250,
         position: 'centre',
       },
+      {
+        name: 'small',
+        width: 200,
+        height: 200,
+        position: 'centre',
+        fit: 'contain'
+      },
     ],
+
     adminThumbnail: 'thumbnail',
     mimeTypes: ['image/*'],
   },

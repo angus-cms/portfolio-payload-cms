@@ -61,6 +61,22 @@ const Employment: CollectionConfig = {
             width: '50%',
             description: 'The date you finished working here (if applicable)',
           },
+          validate: (val, { siblingData }) => {
+            // Check if end_date is provided. If not, skip the comparison.
+            if (!val) {
+              return true;
+            }
+
+            const startDate = new Date(siblingData.start_date);
+            const endDateObj = new Date(val);
+
+            // Check if the provided end_date is actually after the start_date.
+            if (endDateObj <= startDate) {
+              return 'The end date must be after the start date';
+            }
+            
+            return true;
+          },
         },
       ],
     },

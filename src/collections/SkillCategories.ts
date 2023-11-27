@@ -1,5 +1,5 @@
 import payload from 'payload';
-import { CollectionConfig, FieldHook, CollectionBeforeReadHook } from 'payload/types';
+import { CollectionConfig, FieldHook } from 'payload/types';
 import sleep from '../utils/sleep';
 
 // Get the skills for this category
@@ -20,11 +20,6 @@ const getSkills: FieldHook = async ({ data }) => {
   return null;
 };
 
-const beforeReadHook: CollectionBeforeReadHook = async ({data}) => {
-  await sleep(5000);
-}
-
-
 const SkillCategories: CollectionConfig = {
   slug: 'skill-categories',
   admin: {
@@ -32,9 +27,6 @@ const SkillCategories: CollectionConfig = {
   },
   access: {
     read: () => true,
-  },
-  hooks: {
-    beforeRead: [beforeReadHook]
   },
   fields: [
     {

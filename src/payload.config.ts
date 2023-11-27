@@ -14,6 +14,7 @@ import Projects from './collections/Projects'
 import SkillCategories from './collections/SkillCategories'
 import Skills from './collections/Skills'
 import Employment from './collections/Employment'
+import Education from './collections/Education'
 
 import { Media } from './collections/Media'
 
@@ -29,7 +30,7 @@ export default buildConfig({
   },
   cors: ['http://localhost:3000'],
   editor: slateEditor({}),
-  collections: [Users, Pages, Media, Projects, Employment, SkillCategories, Skills],
+  collections: [Users, Pages, Media, Projects, Employment, Education, SkillCategories, Skills],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

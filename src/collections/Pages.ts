@@ -5,11 +5,24 @@ const Pages: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
+    {
+      name: 'id',
+      type: 'text',
+      required: true,
+      unique: true
+    },
     {
       name: 'title',
       type: 'text',
       required: true,
+      admin: {
+        description: 'A slug name for this page',
+        placeholder: 'E.g about',
+      },
     },
     {
       name: 'subtitle',

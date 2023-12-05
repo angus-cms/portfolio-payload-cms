@@ -1,6 +1,5 @@
 import payload from 'payload';
 import { CollectionConfig, FieldHook } from 'payload/types';
-import sleep from '../utils/sleep';
 
 // Get the skills for this category
 const getSkills: FieldHook = async ({ data }) => {
@@ -28,6 +27,7 @@ const SkillCategories: CollectionConfig = {
   access: {
     read: () => true,
   },
+  defaultSort: 'order',
   fields: [
     {
       name: 'title',
@@ -37,6 +37,15 @@ const SkillCategories: CollectionConfig = {
       admin: {
         description: 'A name for a group of skills',
         placeholder: 'E.g Front end'
+      },
+    },
+    {
+      name: 'order',
+      label: 'Order',
+      type: 'number',
+      required: true,
+      admin: {
+        description: 'Where this should appear on the screen (lowest first)',
       },
     },
     {

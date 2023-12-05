@@ -91,6 +91,33 @@ const Projects: CollectionConfig = {
         },
       ],
     },
+    {
+      name: 'links',
+      label: 'Links for project',
+      type: 'group',
+      interfaceName: 'Links',
+      fields: [
+        {
+          name: 'git_link',
+          label: 'Github Link',
+          type: 'text', 
+        },
+        {
+          name: 'web_link',
+          label: 'Website Link',
+          type: 'text', 
+        },
+      ]
+    },
+    {
+      name: 'stack',
+      type: 'relationship',
+      relationTo: ['skills'],
+      hasMany: true,
+      admin: {
+        description: 'Select the skills used to develop this project'
+      }
+    },
   ],
 }
 

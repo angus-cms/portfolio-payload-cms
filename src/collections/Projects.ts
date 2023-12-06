@@ -130,6 +130,16 @@ const Projects: CollectionConfig = {
       ]
     },
     {
+      name: 'tags',
+      type: 'relationship',
+      relationTo: ['tags'],
+      hasMany: true,
+      admin: {
+        description: 'Select tags for this project',
+        position: 'sidebar'
+      }
+    },
+    {
       name: 'stack',
       type: 'relationship',
       relationTo: ['skills'],

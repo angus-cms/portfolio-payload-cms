@@ -24,10 +24,19 @@ const Projects: CollectionConfig = {
       required: true,
     },
     {
+      name: 'coming_soon', // required
+      type: 'checkbox', // required
+      label: 'Coming soon',
+      defaultValue: false,
+      admin: {
+        description: 'Is this project coming soon?',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'date_created',
       label: 'Created at',
       type: 'date',
-      required: true,
       admin: {
         description: 'Date when the project was created',
         position: 'sidebar',
@@ -39,7 +48,15 @@ const Projects: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        description: 'A short description of the project',
+        description: 'A short description of the project for card display',
+      },
+    },
+    {
+      name: 'medium_description',
+      label: 'Medium description',
+      type: 'textarea',
+      admin: {
+        description: 'A medium description of the project at the top of the project page',
       },
     },
     {
@@ -57,7 +74,7 @@ const Projects: CollectionConfig = {
       interfaceName: 'Images',
       fields: [
         {
-          name: 'coverImage',
+          name: 'cover_image',
           label: 'Cover image',
           type: 'upload',
           relationTo: 'media',
@@ -96,6 +113,9 @@ const Projects: CollectionConfig = {
       label: 'Links for project',
       type: 'group',
       interfaceName: 'Links',
+      admin: {
+        position: "sidebar"
+      },
       fields: [
         {
           name: 'git_link',

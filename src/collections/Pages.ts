@@ -3,7 +3,7 @@ import { CollectionConfig } from 'payload/types'
 const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: 'id',
   },
   access: {
     read: () => true,

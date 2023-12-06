@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 import { admins } from '../access/admins'
 import { adminsOrPublished } from '../access/adminsOrPublished'
+import payload from 'payload'
 
 const Projects: CollectionConfig = {
   slug: 'projects',
@@ -22,6 +23,16 @@ const Projects: CollectionConfig = {
       label: 'Title',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'slug',
+      label: 'Slug',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'A url safe slug',
+        placeholder: 'E.g my-project',
+      },
     },
     {
       name: 'coming_soon', // required
@@ -147,6 +158,24 @@ const Projects: CollectionConfig = {
       admin: {
         description: 'Select the skills used to develop this project'
       }
+    },
+  ],
+  endpoints: [
+    {
+      path: "/slug/:slug",
+      method: "get",
+      handler: async (req, res, next) => {
+        const data = await payload.find({
+          collection: 'projects',
+          where: {slug:{equals:req.params.slug}},
+          limit:1
+        })
+        if (data.docs.length === 0) {
+          res.status(404).send({ error: "not found" });
+        } else {
+          res.status(200).send(data.docs[0]);
+        }
+      },
     },
   ],
 }

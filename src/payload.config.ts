@@ -18,6 +18,8 @@ import Education from './collections/Education'
 import FavouriteSection from './collections/FavouriteSection'
 import Tags from './collections/Tags'
 
+import Footer from './globals/Footer'
+
 import { Media } from './collections/Media'
 
 
@@ -33,6 +35,7 @@ export default buildConfig({
   cors: ['http://localhost:3000'],
   editor: slateEditor({}),
   collections: [Users, Pages, Media, Projects, Employment, Education, SkillCategories, Skills, FavouriteSection, Tags],
+  globals: [Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

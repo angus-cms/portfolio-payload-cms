@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types'
 import { admins } from '../access/admins'
 import { adminsOrPublished } from '../access/adminsOrPublished'
 import payload from 'payload'
+import { slateEditor } from '@payloadcms/richtext-slate'
 
 const Projects: CollectionConfig = {
   slug: 'projects',
@@ -77,6 +78,24 @@ const Projects: CollectionConfig = {
       admin: {
         description: 'A more detailed description of the project',
       },
+      editor: slateEditor({
+        admin: {
+          elements: [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "blockquote",
+            "link",
+            "ol",
+            "ul",
+            "textAlign",
+            "indent",
+          ]
+        }
+      })
     },
     {
       name: 'images',

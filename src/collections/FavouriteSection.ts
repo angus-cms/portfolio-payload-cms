@@ -61,13 +61,6 @@ const FavouriteSection: CollectionConfig = {
           },
         },
       ],
-      admin: {
-        components: {
-          RowLabel: ({ data, index }) => {
-            return data?.title || `Item ${String(index).padStart(2, '0')}`
-          },
-        },
-      },
     },
   ],
   

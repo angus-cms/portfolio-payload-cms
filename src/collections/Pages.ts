@@ -20,8 +20,17 @@ const Pages: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        description: 'A slug name for this page',
-        placeholder: 'E.g about',
+        description: 'Displayed in the tab',
+        placeholder: 'E.g About - Angus',
+      },
+    },
+    {
+      name: 'tagline',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Displayed on the page itself',
+        placeholder: 'E.g Welcome to the about page',
       },
     },
     {

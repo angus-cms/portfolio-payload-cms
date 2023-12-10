@@ -171,6 +171,26 @@ const Projects: CollectionConfig = {
         description: 'Select the skills used to develop this project'
       }
     },
+    {
+      name: 'highlights',
+      type: 'array',
+      label: 'Highlights',
+      minRows: 1,
+      maxRows: 6,
+      labels: {
+        singular: 'Highlight',
+        plural: 'Highlights',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text'
+        }
+      ],
+      admin: {
+        description: 'List some highlights for this project'
+      }
+    },
   ],
   endpoints: [
     {

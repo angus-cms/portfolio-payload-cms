@@ -6,7 +6,6 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 
 import { Access } from 'payload/config'
 
-
 const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
@@ -200,14 +199,12 @@ const Projects: CollectionConfig = {
       path: "/slug/:slug",
       method: "get",
       handler: async (req, res, next) => {
-
-        if (adminsOrPublished({req}) !== true) {
-          return res.status(404).send({ error: "not found" });
-        }
-
         const data = await payload.find({
           collection: 'projects',
-          where: {slug:{equals:req.params.slug}},
+          where: {
+            slug:{equals:req.params.slug},
+            _status:{equals:'published'}
+          },
           limit:1
         })
         if (data.docs.length === 0) {

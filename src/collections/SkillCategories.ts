@@ -1,5 +1,6 @@
 import payload from 'payload';
 import { CollectionConfig, FieldHook } from 'payload/types';
+import { adminsOrActive } from '../access/isActive'
 
 // Get the skills for this category
 const getSkills: FieldHook = async ({ data }) => {
@@ -25,7 +26,7 @@ const SkillCategories: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    read: () => true,
+    read: adminsOrActive,
   },
   defaultSort: 'order',
   fields: [
@@ -37,6 +38,16 @@ const SkillCategories: CollectionConfig = {
       admin: {
         description: 'A name for a group of skills',
         placeholder: 'E.g Front end'
+      },
+    },
+    {
+      name: 'active', // required
+      type: 'checkbox', // required
+      label: 'Active',
+      defaultValue: true,
+      admin: {
+        description: 'Should this category be displayed?',
+        position: 'sidebar',
       },
     },
     {

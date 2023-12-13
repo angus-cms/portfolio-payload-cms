@@ -1,24 +1,25 @@
-FROM node:18-alpine as base
+FROM  node:18-alpine as base
 
 FROM base as builder
 
-WORKDIR /home/node
+WORKDIR /home/node/app
 COPY package*.json ./
+COPY yarn.lock ./
 
 COPY . .
 RUN yarn install
 RUN yarn build
 
-FROM base as runtime
+FROM base AS runtime
 
 ENV NODE_ENV=production
 
-WORKDIR /home/node
-COPY package*.json  ./
+WORKDIR /home/node/app
+COPY package.json  ./
 
-COPY --from=builder /home/node/dist ./dist
-COPY --from=builder /home/node/build ./build
-COPY --from=builder /home/node/start.sh ./start.sh
+COPY --from=builder /home/node/app/dist ./dist
+COPY --from=builder /home/node/app/build ./build
+COPY --from=builder /home/node/app/start.sh ./start.sh
 
 EXPOSE 3000
 

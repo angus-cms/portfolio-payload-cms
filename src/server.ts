@@ -21,7 +21,7 @@ const start = async () => {
 
   // Add your own express routes here
 
-  app.listen(1337)
+  app.listen(process.env.PORT || 1337)
 }
 
 start()

@@ -21,6 +21,4 @@ COPY --from=builder /home/node/app/dist ./dist
 COPY --from=builder /home/node/app/build ./build
 COPY --from=builder /home/node/app/start.sh ./start.sh
 
-EXPOSE 3000
-
 CMD /bin/sh start.sh

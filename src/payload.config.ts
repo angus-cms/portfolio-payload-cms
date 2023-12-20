@@ -3,7 +3,7 @@ import path from 'path'
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
-import { slateEditor } from '@payloadcms/richtext-slate'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload/config'
 import seo from '@payloadcms/plugin-seo'
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
@@ -32,9 +32,9 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
-  cors: ['http://localhost:3000'],
-  editor: slateEditor({}),
+  cors: '*', //TODO
   collections: [Users, Pages, Media, Projects, Employment, Education, SkillCategories, Skills, FavouriteSection, Tags],
+  editor: lexicalEditor({}),
   globals: [Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

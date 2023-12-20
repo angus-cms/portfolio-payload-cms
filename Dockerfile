@@ -1,32 +1,26 @@
-FROM node:18.19-alpine as base
-
-FROM base as install
-
-WORKDIR /home/node/app
-COPY package*.json ./
-COPY yarn.lock ./
-RUN yarn install
+FROM  node:18-alpine as base
 
 FROM base as builder
 
 WORKDIR /home/node/app
-COPY --from=install /home/node/app/node_modules ./node_modules
+COPY package*.json ./
+COPY yarn.lock ./
+
 COPY . .
-ENV NODE_ENV=production
+RUN yarn install
 RUN yarn build
 
-FROM base as runtime
+FROM base AS runtime
 
 ENV NODE_ENV=production
-ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
 WORKDIR /home/node/app
-COPY package*.json  ./
+COPY package.json  ./
 
-RUN yarn install --production
 COPY --from=builder /home/node/app/dist ./dist
 COPY --from=builder /home/node/app/build ./build
+COPY --from=builder /home/node/app/start.sh ./start.sh
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD /bin/sh start.sh

@@ -6,6 +6,12 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 
 import { Access } from 'payload/config'
 
+import {
+  HTMLConverterFeature,
+  lexicalEditor,
+  lexicalHTML
+} from '@payloadcms/richtext-lexical'
+
 const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
@@ -80,25 +86,15 @@ const Projects: CollectionConfig = {
       admin: {
         description: 'A more detailed description of the project',
       },
-      editor: slateEditor({
-        admin: {
-          elements: [
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "blockquote",
-            "link",
-            "ol",
-            "ul",
-            "textAlign",
-            "indent",
-          ]
-        }
-      })
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures.filter((feature) => !['relationship', 'upload'].includes(feature.key)),
+          // The HTMLConverter Feature is the feature which manages the HTML serializers. If you do not pass any arguments to it, it will use the default serializers.
+          HTMLConverterFeature({}),
+        ],
+      }),
     },
+    lexicalHTML('long_description', { name: 'long_description_html' }),
     {
       name: 'images',
       label: 'Project Images',

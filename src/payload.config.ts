@@ -19,6 +19,7 @@ import FavouriteSection from './collections/FavouriteSection'
 import Tags from './collections/Tags'
 
 import Footer from './globals/Footer'
+import About from "./globals/About";
 
 import { Media } from './collections/Media'
 
@@ -35,7 +36,7 @@ export default buildConfig({
   cors: '*', //TODO
   collections: [Users, Pages, Media, Projects, Employment, Education, SkillCategories, Skills, FavouriteSection, Tags],
   editor: lexicalEditor({}),
-  globals: [Footer],
+  globals: [Footer, About],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

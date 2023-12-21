@@ -17,6 +17,7 @@ const Projects: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  defaultSort: '-date_created',
   versions: {
     drafts: true,
   },

@@ -12,7 +12,7 @@ const Education: CollectionConfig = {
     create: admins,
     delete: admins,
   },
-  defaultSort: 'start_date',
+  defaultSort: '-start_date',
   fields: [
     {
       type: 'row', 

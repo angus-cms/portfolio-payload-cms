@@ -12,7 +12,7 @@ const Employment: CollectionConfig = {
     create: admins,
     delete: admins,
   },
-  defaultSort: 'start_date',
+  defaultSort: '-start_date',
   fields: [
     {
       name: 'employer',

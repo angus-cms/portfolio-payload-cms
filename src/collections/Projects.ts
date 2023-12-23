@@ -2,9 +2,7 @@ import { CollectionConfig } from 'payload/types'
 import { admins } from '../access/admins'
 import { adminsOrPublished } from '../access/adminsOrPublished'
 import payload from 'payload'
-import { slateEditor } from '@payloadcms/richtext-slate'
 
-import { Access } from 'payload/config'
 
 import {
   HTMLConverterFeature,

@@ -23,12 +23,22 @@ const Skills: CollectionConfig = {
       },
     },
     {
+      name: 'show_on_homepage', // required
+      type: 'checkbox', // required
+      label: 'Show on homepage',
+      defaultValue: true,
+      admin: {
+        description: 'Should this skill be shown on the homepage?',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'category',
       label: 'Skill Category',
       type: 'relationship',
       maxDepth: 0,
       relationTo: ['skill-categories'],
-      required: true,
+      required: false,
     },
     {
       type: 'tabs',

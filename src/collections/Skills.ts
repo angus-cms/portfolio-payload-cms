@@ -23,12 +23,12 @@ const Skills: CollectionConfig = {
       },
     },
     {
-      name: 'show_on_homepage', // required
+      name: 'hide', // required
       type: 'checkbox', // required
-      label: 'Show on homepage',
-      defaultValue: true,
+      label: 'Hide from homepage',
+      defaultValue: false,
       admin: {
-        description: 'Should this skill be shown on the homepage?',
+        description: 'Should this skill be hidden on the homepage?',
         position: 'sidebar',
       },
     },

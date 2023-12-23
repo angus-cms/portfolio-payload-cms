@@ -10,6 +10,9 @@ const getSkills: FieldHook = async ({ data }) => {
       'category.value': {
         equals: data.id,
       },
+      'hide': {
+        equals: false,
+      },
     },
   });
 

@@ -24,6 +24,7 @@ import About from "./globals/About";
 import { Media } from './collections/Media'
 import { Icons } from './collections/Icons'
 
+import {Logo} from './graphics/Logo';
 
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
@@ -39,6 +40,16 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    meta: {
+      titleSuffix: '- Portfolio CMS',
+      favicon: '/assets/favicon.svg',
+      ogImage: '/assets/ogimage.jpg',
+    },
+    components: {
+      graphics: {
+        Logo,
+      },
+    },
   },
   cors: getCorsOrigins(),
   collections: [Users, Pages, Media, Icons, Projects, Employment, Education, SkillCategories, Skills, FavouriteSection, Tags],

@@ -16,9 +16,15 @@ export const Icons: CollectionConfig = {
                 height: 50,
                 position: 'centre',
             },
+            {
+                name: 'small',
+                width: 150,
+                height: 150,
+                position: 'centre',
+            },
         ],
 
-        adminThumbnail: 'icon',
+        adminThumbnail: 'small',
         mimeTypes: ['image/*'],
     },
     fields: [

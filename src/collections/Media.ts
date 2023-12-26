@@ -1,7 +1,5 @@
-import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import type { CollectionConfig } from 'payload/types'
-import { v4 as uuidv4 } from 'uuid';
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -9,25 +7,24 @@ export const Media: CollectionConfig = {
     read: () => true,
   },
   upload: {
-    staticURL: '/media',
-    staticDir: path.resolve(__dirname, '../../media'),
+    staticURL: '/media/general',
+    staticDir: path.resolve(__dirname, '../../media/general'),
     imageSizes: [
       {
-        name: 'thumbnail',
-        width: 250,
-        height: 250,
+        name: 'icon',
+        width: 50,
+        height: 50,
         position: 'centre',
       },
       {
         name: 'small',
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
         position: 'centre',
-        fit: 'contain'
       },
     ],
 
-    adminThumbnail: 'thumbnail',
+    adminThumbnail: 'small',
     mimeTypes: ['image/*'],
   },
   fields: [

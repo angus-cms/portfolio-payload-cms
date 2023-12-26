@@ -85,7 +85,7 @@ const Employment: CollectionConfig = {
       name: 'icon',
       label: 'Icon',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: 'icons',
       required: true,
     },
   ],

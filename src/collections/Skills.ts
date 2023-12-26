@@ -50,7 +50,7 @@ const Skills: CollectionConfig = {
               name: 'icon',
               label: 'Icon',
               type: 'upload',
-              relationTo: 'media',
+              relationTo: 'icons',
               required: true,
             },
           ],
@@ -62,7 +62,7 @@ const Skills: CollectionConfig = {
               name: 'icon_dark_mode',
               label: 'Icon for dark mode',
               type: 'upload',
-              relationTo: 'media',
+              relationTo: 'icons',
               required: false,
               admin: {
                 description: 'A logo that will be visible on a darker background',

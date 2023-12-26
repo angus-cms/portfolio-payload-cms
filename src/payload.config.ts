@@ -22,19 +22,38 @@ import Footer from './globals/Footer'
 import About from "./globals/About";
 
 import { Media } from './collections/Media'
+import { Icons } from './collections/Icons'
 
-
+import {Logo} from './graphics/Logo';
+import {Icon} from './graphics/Icon';
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
 }
+
+const getCorsOrigins = () => {
+  const corsOrigins = process.env.CORS_ORIGINS;
+  return corsOrigins ? corsOrigins.split(',') : [];
+};
+
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    meta: {
+      titleSuffix: '- Portfolio CMS',
+      favicon: '/assets/favicon.svg',
+      ogImage: '/assets/ogimage.jpg',
+    },
+    components: {
+      graphics: {
+        Logo,
+        Icon
+      },
+    },
   },
-  cors: '*', //TODO
-  collections: [Users, Pages, Media, Projects, Employment, Education, SkillCategories, Skills, FavouriteSection, Tags],
+  cors: getCorsOrigins(),
+  collections: [Users, Pages, Media, Icons, Projects, Employment, Education, SkillCategories, Skills, FavouriteSection, Tags],
   editor: lexicalEditor({}),
   globals: [Footer, About],
   typescript: {

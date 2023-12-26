@@ -16,6 +16,7 @@ ENV NODE_ENV=production
 
 WORKDIR /home/node/app
 COPY package.json  ./
+COPY yarn.lock ./
 
 COPY --from=builder /home/node/app/dist ./dist
 COPY --from=builder /home/node/app/build ./build

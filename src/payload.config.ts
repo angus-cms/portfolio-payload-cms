@@ -25,7 +25,7 @@ import { Media } from './collections/Media'
 import { Icons } from './collections/Icons'
 
 import {Logo} from './graphics/Logo';
-
+import {Icon} from './graphics/Icon';
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
 }
@@ -48,6 +48,7 @@ export default buildConfig({
     components: {
       graphics: {
         Logo,
+        Icon
       },
     },
   },
